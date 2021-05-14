@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Recoradar</th>
+                    <th scope="col">Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tips">
+                    <td>{{item.title}}</td>
+                    <td>{{item.name}}</td>
+                    <td><input type="checkbox" [checked]="item.withReminder" data-toggle="toggle" disabled></td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" (click)="getTip(item.id)">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <div *ngIf="message != ''">
+            <div class="alert" role="alert" [ngClass]="{'alert-success': success, 'alert-danger': !success}">
+                {{message}}
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <form [formGroup]="formulario" novalidate>
+                <div class="form-group">
+                    <input type="hidden" class="form-control" name="id" formControlName="id" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="title">Titulo</label>
+                    <input type="text" class="form-control" name="title" formControlName="title" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Categoria</label>
+                    <select class="orm-control form-select" name="category" formControlName="category">
+                        <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="category">Descripcion</label>
+                   <editor apiKey="wig7xvqbyuv3x21wpek9uey1xdh9hsnsrvpjbzsidqrraq76" formControlName="description" [init]="editorConfig" ></editor>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="category">Recordar tarea ?</label>
+                    <input type="checkbox"  data-toggle="toggle" name="withReminder" formControlName="withReminder">
+                </div>
+
+                <br><br>
+                <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-primary" (click)="guardar()">
+                        Guardar
+                    </button>
+                    <button type="button" class="btn btn-secondary" (click)="cancelar()">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

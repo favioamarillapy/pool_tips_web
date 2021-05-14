@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { CategoriesService } from 'src/app/services/categories.service';
+import { TipsService } from 'src/app/services/tips.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+  categories: any = [];
+  tips: any = [];
+
+  constructor(
+    private categoriesService: CategoriesService,
+    private tipsService: TipsService,
+    private ngxService: NgxUiLoaderService
+  ) { }
+
+  async ngOnInit() {
+    await this.getCategories();
   }
 
+  async getCategories() {
+    this.ngxService.start();
+    let response: any = await this.categoriesService.get();
+    this.categories = response.data;
+
+    this.ngxService.stop();
+  }
+
+  async getTips(category) {
+    this.ngxService.start();
+    let response: any = await this.tipsService.get(category);
+    this.tips = response.data;
+
+    console.log(this.tips);
+    this.ngxService.stop();
+  }
 }

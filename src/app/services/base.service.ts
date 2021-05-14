@@ -17,7 +17,7 @@ export class BaseService {
     public http: HttpClient
   ) { }
 
-  public async obtener(id?, parametros?) {
+  public async get(id?, parametros?) {
     const url = (id) ? `${API}/${this.recurso}/${id}` : `${API}/${this.recurso}`;
 
     const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
@@ -35,7 +35,7 @@ export class BaseService {
     });
   }
 
-  public async registrar(data) {
+  public async register(data) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return new Promise(resolve => {
@@ -50,7 +50,7 @@ export class BaseService {
     });
   }
 
-  public async actualizar(data, id) {
+  public async update(data, id) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return new Promise(resolve => {
@@ -65,7 +65,7 @@ export class BaseService {
     });
   }
 
-  async eliminar(id) {
+  async delete(id) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return new Promise(resolve => {
