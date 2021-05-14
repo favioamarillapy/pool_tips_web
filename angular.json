@@ -28,14 +28,10 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/assets/bootstrap5/css/bootstrap.min.css",
                             "src/styles.scss",
                             "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
                         ],
-                        "scripts": [
-                            "node_modules/jquery/dist/jquery.min.js",
-                            "src/assets/bootstrap5/js/bootstrap.min.js"
-                        ]
+                        "scripts": []
                     },
                     "configurations": {
                         "production": {
