@@ -56,9 +56,9 @@ export class UserService {
     return await localStorage.getItem('pool-tips-token') || null;
   }
 
-  cerrarSession() {
-    this.logoutEmitter.emit(null)
+  logout() {
     localStorage.clear();
+    this.logoutEmitter.emit(null)
     this.router.navigate(['/login']);
   }
 

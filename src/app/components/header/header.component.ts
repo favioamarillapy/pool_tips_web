@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
       });
   }
 
-  async signup() {
-    await this.userService.signup(this.token);
+  async logout() {
+    await this.userService.logout();
   }
 }
