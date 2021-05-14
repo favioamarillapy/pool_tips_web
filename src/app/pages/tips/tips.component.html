@@ -41,17 +41,17 @@
                 </div>
                 <div class="form-group">
                     <label for="category">Categoria</label>
-                    <select class="orm-control form-select" name="category" formControlName="category">
+                    <select class="form-control form-select" name="category" formControlName="category">
                         <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="category">Descripcion</label>
-                   <editor apiKey="wig7xvqbyuv3x21wpek9uey1xdh9hsnsrvpjbzsidqrraq76" formControlName="description" [init]="editorConfig" ></editor>
+                    <editor apiKey="wig7xvqbyuv3x21wpek9uey1xdh9hsnsrvpjbzsidqrraq76" formControlName="description" [init]="editorConfig"></editor>
                 </div>
                 <div class="form-group mt-3">
                     <label for="category">Recordar tarea ?</label>
-                    <input type="checkbox"  data-toggle="toggle" name="withReminder" formControlName="withReminder">
+                    <input type="checkbox" data-toggle="toggle" name="withReminder" formControlName="withReminder">
                 </div>
 
                 <br><br>
