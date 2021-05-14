@@ -8,10 +8,10 @@ import { RegisterComponent } from './pages/register/register.component';
 import { TipsComponent } from './pages/tips/tips.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full' },
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'categories', component: CategoriesComponent, canActivate: [AuthGuard] },
   { path: 'tips', component: TipsComponent, canActivate: [AuthGuard] },
 ];

@@ -59,7 +59,7 @@ export class UserService {
   logout() {
     localStorage.clear();
     this.logoutEmitter.emit(null)
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
 }

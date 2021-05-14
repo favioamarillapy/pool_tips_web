@@ -13,8 +13,8 @@ export class AuthGuard implements CanActivate {
         private router: Router
     ) { }
 
-    canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-        let isLogin = this.userService.getToken() != null;
+    async canActivate() {
+        let isLogin = await this.userService.getToken() != null;
         console.log('isLogin', isLogin);
 
         if (!isLogin) {
