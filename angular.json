@@ -28,10 +28,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/assets/bootstrap5/css/bootstrap.min.css"
+              "src/assets/bootstrap5/css/bootstrap.min.css",
+              "src/styles.scss"
             ],
             "scripts": [
+              "src/assets/bootstrap5/js/jquery-3.6.0.min.js",
               "src/assets/bootstrap5/js/bootstrap.min.js"
             ]
           },

@@ -1,6 +1,6 @@
 import { Injectable, OnInit, Output, EventEmitter } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 const API = environment.api;
@@ -11,6 +11,9 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
 })
 export class UserService {
 
+  @Output() loginEmitter = new EventEmitter();
+  @Output() logoutEmitter = new EventEmitter();
+
   constructor(
     public http: HttpClient,
     private router: Router
@@ -20,6 +23,7 @@ export class UserService {
     return new Promise(resolve => {
       this.http.post(`${API}/auth/signin`, user, { headers })
         .subscribe(async (response: any) => {
+          this.loginEmitter.emit(response.user);
           resolve({ success: true, data: response });
         },
           (error) => {
@@ -30,9 +34,9 @@ export class UserService {
     });
   }
 
-  async signup(user) {
+  async signup(token: any) {
     return new Promise(resolve => {
-      this.http.post(`${API}/auth/signup`, user, { headers })
+      this.http.post(`${API}/auth/signup`, token, { headers })
         .subscribe(async (response: any) => {
           resolve({ success: true, data: response });
         },
@@ -53,6 +57,7 @@ export class UserService {
   }
 
   cerrarSession() {
+    this.logoutEmitter.emit(null)
     localStorage.clear();
     this.router.navigate(['/login']);
   }
