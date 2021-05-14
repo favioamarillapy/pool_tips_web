@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  font-family: "Roboto", sans-serif !important;
+}
+.is-invalid {
+  input {
+    border-color: #dc3545;
+  }
+  label {
+    color: #dc3545;
+  }
+}
