@@ -19,7 +19,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { CustomHttpInterceptor } from './interceptors/http-interceptor';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
-  "bgsColor": "red",
+  "bgsColor": "#00cdf7",
   "bgsOpacity": 0.5,
   "bgsPosition": "bottom-right",
   "bgsSize": 60,
@@ -27,7 +27,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "blur": 5,
   "delay": 0,
   "fastFadeOut": true,
-  "fgsColor": "red",
+  "fgsColor": "#00cdf7",
   "fgsPosition": "center-center",
   "fgsSize": 60,
   "fgsType": "ball-spin-clockwise",
@@ -38,7 +38,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "masterLoaderId": "master",
   "overlayBorderRadius": "0",
   "overlayColor": "rgba(40, 40, 40, 0.8)",
-  "pbColor": "red",
+  "pbColor": "#00cdf7",
   "pbDirection": "ltr",
   "pbThickness": 3,
   "hasProgressBar": true,
