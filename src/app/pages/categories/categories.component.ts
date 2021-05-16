@@ -30,13 +30,14 @@ export class CategoriesComponent implements OnInit {
   goForm: boolean = false;
   formulario: FormGroup;
   categories: any = []
+  selectedFile: File = null;
 
   success: boolean;
   message = '';
   constructor(
     private categoriesService: CategoriesService,
     private ngxService: NgxUiLoaderService,
-    public formBuilder: FormBuilder,
+    public formBuilder: FormBuilder
   ) { }
 
   async ngOnInit() {
@@ -54,42 +55,65 @@ export class CategoriesComponent implements OnInit {
 
   async getCategory(id) {
     this.ngxService.start();
+
     let response: any = await this.categoriesService.get(id);
+    console.log('response: ', response, response.image);//este se deberia de llamar solo cuando se da al boton editar de la grilla
+    
     this.formulario.get('id').setValue(response.id);
     this.formulario.get('name').setValue(response.name);
+    this.formulario.get('url').setValue(response.image); //el nombre lo que no carga
+  
 
+    console.log(this.formulario.value.image);
+    
     this.ngxService.stop();
   }
 
   async createForm() {
     this.formulario = this.formBuilder.group({
       id: [0],
-      name: ['', [Validators.required]]
+      name: ['', [Validators.required]],
+      image: ['', [Validators.required]],
+      url: [''],
     });
   }
 
   async guardar() {
+    const formdata = new FormData();
+    if (this.selectedFile) formdata.append('file', this.selectedFile); 
+    for (const field in this.formulario.controls) {
+      console.log('field: ', field);
+      
+      if (this.formulario.controls[field].value) formdata.append(field, this.formulario.controls[field].value);
+    }
+
     let response: any
     let id = await this.formulario.get('id').value;
-
     if (id) {
-      response = await this.categoriesService.update(this.formulario.value, id);
+      formdata.append('_method', 'PUT');
+      response = await this.categoriesService.update(formdata, id); 
     } else {
-      response = await this.categoriesService.register(this.formulario.value);
+      response = await this.categoriesService.register(formdata);
     }
-    console.log(response);
 
-    this.success = (response.id) ? true : false;
+   this.success = (response.id) ? true : false;
     this.message = response.message;
 
-    await this.getCategories();
-    await this.createForm();
-    setTimeout(() => {
-      this.message = '';
-    }, 2000);
+    if (this.success) {
+      await this.getCategories();
+      this.formulario.reset();
+      setTimeout(() => {
+        this.message = '';
+      }, 2000);
+    }
   }
 
   async cancelar() {
-    this.createForm();
+    this.formulario.reset();
   }
+
+  async onFileChange(event) {
+    this.selectedFile = <File>event.target.files[0];
+  }
+
 }

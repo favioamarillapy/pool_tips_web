@@ -7,7 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { PipesModule } from './pipes/pipes.module';
@@ -16,6 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { TipsComponent } from './pages/tips/tips.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { CustomHttpInterceptor } from './interceptors/http-interceptor';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "bgsColor": "red",
@@ -71,7 +72,13 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AngularFileUploaderModule,
     EditorModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomHttpInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   exports: [
 

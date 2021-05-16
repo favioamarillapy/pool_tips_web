@@ -11,11 +11,13 @@ export class ImageUrlPipe implements PipeTransform {
 
   transform(url: any, args: any[]): any {
 
+    console.log(args);
+    
+
     url = `${imageApi}`;
     console.log(url);
     url = url.replace('service', args[0]);
-    url = url.replace('id', args[1]);
-    url = url.replace('image', args[2]);
+    url = url.replace('image', args[1]);
 
     console.log('image', url);
     
