@@ -47,6 +47,7 @@ export class CategoriesComponent implements OnInit {
 
   async getCategories() {
     this.ngxService.start();
+
     let response: any = await this.categoriesService.get();
     this.categories = response.data;
 
@@ -60,7 +61,7 @@ export class CategoriesComponent implements OnInit {
     this.formulario.get('id').setValue(response.id);
     this.formulario.get('name').setValue(response.name);
     this.formulario.get('url').setValue(response.image);
-    
+
     this.ngxService.stop();
   }
 
@@ -74,8 +75,10 @@ export class CategoriesComponent implements OnInit {
   }
 
   async guardar() {
+    this.ngxService.start();
+
     const formdata = new FormData();
-    if (this.selectedFile) formdata.append('file', this.selectedFile); 
+    if (this.selectedFile) formdata.append('file', this.selectedFile);
     for (const field in this.formulario.controls) {
       if (this.formulario.controls[field].value) formdata.append(field, this.formulario.controls[field].value);
     }
@@ -83,12 +86,12 @@ export class CategoriesComponent implements OnInit {
     let response: any
     let id = await this.formulario.get('id').value;
     if (id) {
-      response = await this.categoriesService.update(formdata, id); 
+      response = await this.categoriesService.update(formdata, id);
     } else {
       response = await this.categoriesService.register(formdata);
     }
 
-   this.success = (response.id) ? true : false;
+    this.success = (response.id) ? true : false;
     this.message = response.message;
 
     if (this.success) {
@@ -98,6 +101,7 @@ export class CategoriesComponent implements OnInit {
         this.message = '';
       }, 2000);
     }
+    this.ngxService.stop();
   }
 
   async cancelar() {
