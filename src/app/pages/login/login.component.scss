@@ -45,6 +45,13 @@ nav .navbar {
     margin: auto !important;
 }
 
+@media only screen and (max-width: 600px) {
+    .form {
+        width: 90%;
+        height: 90%;
+    }
+}
+
 .form .thumbnail {
     margin: 0 auto 20px;
     border-radius: 100%;
