@@ -41,8 +41,10 @@
                     <label for="image">Imagen</label>
                     <input type="file" class="form-control-file" name="image" formControlName="image" (change)="onFileChange($event)">
                 </div>
+                <div class="form-group">
+                    <img class="image" *ngIf="formulario.value.url" [src]="formulario.value.url | imageUrl: ['category', formulario.value.url]" />
+                </div>
                 <br><br>
-                <img [src]="formulario.value.url | imageUrl: ['category', formulario.value.url]" />
                 <div class="d-grid gap-2">
                     <button type="button" class="btn btn-primary" (click)="guardar()">
                         Guardar
