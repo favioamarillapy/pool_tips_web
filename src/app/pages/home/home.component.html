@@ -13,14 +13,13 @@
 </div>
 
 <div class="row tips" *ngIf="tips.length > 0">
-    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+    <ngb-accordion #acc="ngbAccordion">
         <ngb-panel *ngFor="let item of tips">
-            <ng-template ngbPanelHeader class="bg-light">
+            <ng-template ngbPanelHeader let-opened="opened">
                 <div class="d-flex justify-content-between">
                     <button ngbPanelToggle class="btn btn-link pl-0">{{item.title}}</button>
                 </div>
             </ng-template>
-
             <ng-template ngbPanelContent>
                 <p class="text-muted"> {{item.description}}</p>
                 <div class="row" *ngIf="item.withReminder == 1">

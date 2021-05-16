@@ -17,6 +17,9 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
 import { TipsComponent } from './pages/tips/tips.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { CustomHttpInterceptor } from './interceptors/http-interceptor';
+import { PaginationComponent } from './components/pagination/pagination.component';
+
+import { ComponentsModule } from './components/components.module';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "bgsColor": "#00cdf7",
@@ -56,9 +59,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    HeaderComponent,
     CategoriesComponent,
-    TipsComponent
+    TipsComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgbModule,
     AngularFileUploaderModule,
-    EditorModule
+    EditorModule,
+    ComponentsModule
   ],
   providers: [
     {

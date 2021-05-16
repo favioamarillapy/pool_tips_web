@@ -14,19 +14,19 @@ declare let $: any;
 })
 export class TipsComponent implements OnInit {
 
-editorConfig={
-     height: 300,
-     menubar: false,
-     plugins: [
-       'advlist autolink lists link image charmap print preview anchor',
-       'searchreplace visualblocks code fullscreen',
-       'insertdatetime media table paste code help wordcount'
-     ],
-     toolbar:
-       'undo redo | formatselect | bold italic backcolor | \
+  editorConfig = {
+    height: 300,
+    menubar: false,
+    plugins: [
+      'advlist autolink lists link image charmap print preview anchor',
+      'searchreplace visualblocks code fullscreen',
+      'insertdatetime media table paste code help wordcount'
+    ],
+    toolbar:
+      'undo redo | formatselect | bold italic backcolor | \
        alignleft aligncenter alignright alignjustify | \
        bullist numlist outdent indent | removeformat | help'
-   }
+  }
 
   goForm: boolean = false;
   formulario: FormGroup;
@@ -36,6 +36,11 @@ editorConfig={
 
   success: boolean;
   message = '';
+
+  public parameters: any = []
+  public page = 1;
+  public total;
+
   constructor(
     private tipsService: TipsService,
     private ngxService: NgxUiLoaderService,
@@ -44,7 +49,7 @@ editorConfig={
   ) {
     this.createForm();
     this.getCategories();
-    this.getTips();
+    this.getTips(this.page);
   }
 
   async ngOnInit() {
@@ -54,14 +59,23 @@ editorConfig={
     this.ngxService.start();
     let response: any = await this.categoriesService.get();
     this.categories = response.data;
-
-    this.ngxService.stop();
   }
 
-  async getTips() {
+  async getTips(pagina?) {
     this.ngxService.start();
-    let response: any = await this.tipsService.get();
+    
+    this.page = (pagina) ? pagina : this.page;
+    this.categories = null;
+
+    this.parameters = null;
+    this.parameters = {
+      paginar: true,
+      page: this.page
+    };
+
+    let response: any = await this.tipsService.get(null, this.parameters);
     this.tips = response.data;
+    this.total = response.total;
 
     this.ngxService.stop();
   }
@@ -84,7 +98,7 @@ editorConfig={
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
       category: [null, [Validators.required]],
-      withReminder: [false, [Validators.required]]  
+      withReminder: [false, [Validators.required]]
     });
   }
 

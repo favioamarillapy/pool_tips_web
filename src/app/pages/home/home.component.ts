@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
 
   async getCategories() {
     this.ngxService.start();
+
     let response: any = await this.categoriesService.get();
     this.categories = response.data;
 
@@ -34,8 +35,12 @@ export class HomeComponent implements OnInit {
 
   async getTips(category) {
     this.ngxService.start();
-    let response: any = await this.tipsService.get(category);
-    this.tips = response.data;
+
+    let response: any = await this.tipsService.get(null, { category: category });
+    console.log(response);
+
+    this.tips = await response.data;
+
 
     this.ngxService.stop();
   }

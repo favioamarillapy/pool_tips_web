@@ -5,14 +5,14 @@
                 <tr>
                     <th scope="col">Titulo</th>
                     <th scope="col">Categoria</th>
-                    <th scope="col">Recoradar</th>
+                    <th scope="col">Recordar</th>
                     <th scope="col">Accion</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of tips">
                     <td>{{item.title}}</td>
-                    <td>{{item.name}}</td>
+                    <td>{{item.category.name}}</td>
                     <td><input type="checkbox" [checked]="item.withReminder" data-toggle="toggle" disabled></td>
                     <td>
                         <button class="btn btn-warning btn-sm" (click)="getTip(item.id)">
@@ -22,6 +22,8 @@
                 </tr>
             </tbody>
         </table>
+        <app-pagination (actualizarPagina)="getTips($event)" [datos]="categories" [total]="total" [paginaActual]="page">
+        </app-pagination>
     </div>
     <div class="col-md-4">
         <div *ngIf="message != ''">
