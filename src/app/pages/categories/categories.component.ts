@@ -57,14 +57,9 @@ export class CategoriesComponent implements OnInit {
     this.ngxService.start();
 
     let response: any = await this.categoriesService.get(id);
-    console.log('response: ', response, response.image);//este se deberia de llamar solo cuando se da al boton editar de la grilla
-    
     this.formulario.get('id').setValue(response.id);
     this.formulario.get('name').setValue(response.name);
-    this.formulario.get('url').setValue(response.image); //el nombre lo que no carga
-  
-
-    console.log(this.formulario.value.image);
+    this.formulario.get('url').setValue(response.image);
     
     this.ngxService.stop();
   }
@@ -82,15 +77,12 @@ export class CategoriesComponent implements OnInit {
     const formdata = new FormData();
     if (this.selectedFile) formdata.append('file', this.selectedFile); 
     for (const field in this.formulario.controls) {
-      console.log('field: ', field);
-      
       if (this.formulario.controls[field].value) formdata.append(field, this.formulario.controls[field].value);
     }
 
     let response: any
     let id = await this.formulario.get('id').value;
     if (id) {
-      formdata.append('_method', 'PUT');
       response = await this.categoriesService.update(formdata, id); 
     } else {
       response = await this.categoriesService.register(formdata);

@@ -65,7 +65,8 @@ export class BaseService {
 
   public update(data: FormData, id) {
     return new Promise(resolve => {
-      this.http.put(`${API}/${this.recurso}/${id}`, data).subscribe(
+      data.append('_method', 'PUT');
+      this.http.post(`${API}/${this.recurso}/${id}`, data).subscribe(
         (response: any) => resolve(response),
         error => resolve(error.error)
       );

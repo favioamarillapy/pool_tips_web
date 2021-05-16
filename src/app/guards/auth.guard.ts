@@ -15,7 +15,6 @@ export class AuthGuard implements CanActivate {
 
     async canActivate() {
         let isLogin = await this.userService.getToken() != null;
-        console.log('isLogin', isLogin);
 
         if (!isLogin) {
             this.router.navigate(['/login']);

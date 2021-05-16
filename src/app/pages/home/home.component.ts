@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
     let response: any = await this.tipsService.get(category);
     this.tips = response.data;
 
-    console.log(this.tips);
     this.ngxService.stop();
   }
 }

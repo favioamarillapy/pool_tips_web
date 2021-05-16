@@ -89,8 +89,6 @@ editorConfig={
   }
 
   async guardar() {
-    console.log(this.formulario.value);
-    
     let response: any
     let id = await this.formulario.get('id').value;
 
@@ -99,7 +97,6 @@ editorConfig={
     } else {
       response = await this.tipsService.register(this.formulario.value);
     }
-    console.log(response);
 
     this.success = (response.id) ? true : false;
     this.message = response.message;

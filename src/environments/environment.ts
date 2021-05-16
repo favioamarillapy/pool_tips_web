@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   api: 'http://pooltips.ecommercesy.com/api',
-  image_api: 'http://pooltips.ecommercesy.com/storage/service/id/image'
+  image_api: 'http://pooltips.ecommercesy.com/storage/service/image'
 };
 
 /*

@@ -43,8 +43,6 @@ export class CustomHttpInterceptor implements HttpInterceptor {
                         }
                     });
                 }
-
-                console.log(req.headers.get('Content-Type'));
                 
 
                 return next.handle(req).pipe(
