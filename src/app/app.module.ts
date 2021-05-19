@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { HomeComponent } from './pages/home/home.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HeaderComponent } from './components/header/header.component';
-import { CategoriesComponent } from './pages/categories/categories.component';
+
 import { PipesModule } from './pipes/pipes.module';
-import { NgxUiLoaderConfig, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AngularFileUploaderModule } from "angular-file-uploader";
-import { TipsComponent } from './pages/tips/tips.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { AngularFileUploaderModule } from "angular-file-uploader";
+import { NgxUiLoaderConfig, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { CustomHttpInterceptor } from './interceptors/http-interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
+import { TipsComponent } from './pages/tips/tips.component';
+import { LoginComponent } from './pages/login/login.component';
+import { HeaderComponent } from './components/header/header.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 
 import { ComponentsModule } from './components/components.module';
@@ -73,7 +75,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgbModule,
     AngularFileUploaderModule,
     EditorModule,
-    ComponentsModule
+    ComponentsModule,
+    NgxPaginationModule,
   ],
   providers: [
     {

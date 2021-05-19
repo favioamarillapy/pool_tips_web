@@ -14,20 +14,14 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   constructor() { }
 
-  ngOnInit() {
-    console.log('paginaActual: ', this.paginaActual, 'total: ', this.total);
-    
-  }
+  ngOnInit() {}
 
   ngOnChanges(changes) {
     if (changes.paginaActual) this.paginaActual = changes.paginaActual.currentValue;
     if (changes.total) this.total = changes.total.currentValue;
-
-    console.log('paginaActual: ', this.paginaActual, 'total: ', this.total);
   }
 
   actualizar(pagina) {
-    console.log('event change: ', pagina);
     this.actualizarPagina.emit(pagina);
   }
 }

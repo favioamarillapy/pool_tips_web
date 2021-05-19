@@ -28,18 +28,19 @@ export class TipsComponent implements OnInit {
        bullist numlist outdent indent | removeformat | help'
   }
 
-  goForm: boolean = false;
-  formulario: FormGroup;
   tips: any = [];
   categories: any = [];
-  editorValue: string = ''
+  formulario: FormGroup;
+  goForm: boolean = false;
+  editorValue: string = '';
 
   success: boolean;
   message = '';
 
   public parameters: any = []
+  public perPage = 10;
+  public total = 0;
   public page = 1;
-  public total;
 
   constructor(
     private tipsService: TipsService,
@@ -76,6 +77,7 @@ export class TipsComponent implements OnInit {
     let response: any = await this.tipsService.get(null, this.parameters);
     this.tips = response.data;
     this.total = response.total;
+    this.perPage = response.per_page;
 
     this.ngxService.stop();
   }

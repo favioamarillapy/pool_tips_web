@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of tips">
+                <tr *ngFor="let item of tips | paginate: { itemsPerPage: perPage, currentPage: page }">
                     <td>{{item.title}}</td>
                     <td>{{item.category.name}}</td>
                     <td><input type="checkbox" [checked]="item.withReminder" data-toggle="toggle" disabled></td>
