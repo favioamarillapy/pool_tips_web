@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of tips | paginate: { itemsPerPage: perPage, currentPage: page }">
+                <tr *ngFor="let item of tips | paginate: { itemsPerPage: perPage, currentPage: page, totalItems: total }">
                     <td>{{item.title}}</td>
                     <td>{{item.category.name}}</td>
                     <td><input type="checkbox" [checked]="item.withReminder" data-toggle="toggle" disabled></td>
@@ -22,7 +22,7 @@
                 </tr>
             </tbody>
         </table>
-        <app-pagination (actualizarPagina)="getTips($event)" [datos]="categories" [total]="total" [paginaActual]="page">
+        <app-pagination (actualizarPagina)="getTips($event)" [datos]="tips" [total]="total" [paginaActual]="page">
         </app-pagination>
     </div>
     <div class="col-md-4">

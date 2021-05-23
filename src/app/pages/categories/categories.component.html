@@ -9,7 +9,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of categories">
+                <tr *ngFor="let item of categories | paginate: { itemsPerPage: perPage, currentPage: page, totalItems: total }">
                     <td>{{item.name}}</td>
                     <td>{{item.tips_count}}</td>
                     <td>
@@ -20,6 +20,8 @@
                 </tr>
             </tbody>
         </table>
+        <app-pagination (actualizarPagina)="getCategories($event)" [datos]="categories" [total]="total" [paginaActual]="page">
+        </app-pagination>
     </div>
     <div class="col-md-4">
         <div *ngIf="message != ''">

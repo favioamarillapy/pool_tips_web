@@ -34,6 +34,12 @@ export class CategoriesComponent implements OnInit {
 
   success: boolean;
   message = '';
+
+  public parameters: any = []
+  public perPage = 10;
+  public total = 0;
+  public page = 1;
+
   constructor(
     private categoriesService: CategoriesService,
     private ngxService: NgxUiLoaderService,
@@ -45,11 +51,22 @@ export class CategoriesComponent implements OnInit {
     await this.getCategories();
   }
 
-  async getCategories() {
+  async getCategories(pagina?) {
     this.ngxService.start();
 
-    let response: any = await this.categoriesService.get();
+    this.page = (pagina) ? pagina : this.page;
+    this.categories = null;
+
+    this.parameters = null;
+    this.parameters = {
+      paginar: true,
+      page: this.page
+    };
+
+    let response: any = await this.categoriesService.get(null, this.parameters);
     this.categories = response.data;
+    this.total = response.total;
+    this.perPage = response.per_page;
 
     this.ngxService.stop();
   }
