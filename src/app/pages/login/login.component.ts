@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   ngOnInit() {
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
+    this.ngxService.start();
     this.goForm = true;
     if (this.frmLogin.valid) {
 
@@ -47,10 +50,13 @@ export class LoginComponent implements OnInit {
       if (response.success) {
         await localStorage.setItem('pool-tips-token', response.data.access_token);
         await localStorage.setItem('pool-tips-user', JSON.stringify(response.data.user));
+        this.ngxService.stop();
         this.router.navigate(['/']);
       } else {
+        this.ngxService.stop();
         this.acceso = false;
       };
     }
+    this.ngxService.stop();
   }
 }

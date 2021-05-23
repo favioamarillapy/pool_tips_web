@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,14 +11,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  cargando: boolean = false;
   goForm: boolean = false;
   frmLogin: FormGroup;
 
   constructor(
     public formBuilder: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private ngxService: NgxUiLoaderService
   ) { }
 
   ngOnInit() {
@@ -34,20 +35,21 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  async login() {
+  async register() {
+    this.ngxService.start();
     this.goForm = true;
     if (this.frmLogin.valid) {
 
-      this.cargando = true;
       const response: any = await this.userService.signup(this.frmLogin.value);
-      this.cargando = false;
 
       if (response.success) {
         await localStorage.setItem('pool-tips-token', response.data.access_token);
         await localStorage.setItem('pool-tips-user', JSON.stringify(response.data.user));
+        this.ngxService.start();
         this.router.navigate(['/']);
       }
     }
+    this.ngxService.stop();
   }
 
 }
