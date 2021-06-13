@@ -6,7 +6,7 @@
                 <div class="form align-center">
                     <div class="thumbnail"><img src="assets/images/icon.png" width="100" height="100" /></div>
                     <br>
-                    <form [formGroup]="frmLogin" class="form-signin text-center" novalidate>
+                    <form [formGroup]="frmLogin" class="form-signin text-center" novalidate (ngSubmit)="register()">
                         <div class="form-group" [ngClass]="{'is-invalid': frmLogin.get('name').hasError('required') && goForm }">
                             <label for="name">Nombre Completo</label>
                             <input type="text" class="form-control" name="name" formControlName="name" autocomplete="off" required>
@@ -20,7 +20,7 @@
                             <input type="password" class="form-control" name="password" formControlName="password" autocomplete="off" required>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-primary" (click)="register()">
+                            <button type="submit" class="btn btn-primary">
                                 Registrarse
                             </button>
                         </div>

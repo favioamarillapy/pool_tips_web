@@ -22,6 +22,7 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 
 import { ComponentsModule } from './components/components.module';
+import { StatusComponent } from './pages/status/status.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "bgsColor": "#00cdf7",
@@ -63,6 +64,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HomeComponent,
     CategoriesComponent,
     TipsComponent,
+    StatusComponent,
   ],
   imports: [
     BrowserModule,
