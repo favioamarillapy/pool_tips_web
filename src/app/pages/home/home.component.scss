@@ -1,13 +1,19 @@
 .card {
-  border: none;
+    border-radius: .30rem !important;
 }
 
 .card-body {
-  color: white;
-  border-radius: 20px;
+    color: white;
+    border-radius: .30rem !important;
+    span {
+        font-size: 20px;
+    }
+    span.badge {
+        font-size: 13px;
+    }
 }
 
 .btn-link {
-  color: rgb(33, 33, 33) !important;
-  text-decoration: none;
+    color: rgb(33, 33, 33) !important;
+    text-decoration: none;
 }

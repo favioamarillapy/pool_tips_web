@@ -1,16 +1,16 @@
 <div class="row">
+
     <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let item of categories">
-        <div class="card mr-3" style="width: 18rem;">
+        <div class="card mr-3">
             <div class="card-body" [style]="item.image | imagePipe:['category', item.image]" alt="Card image cap">
-                Tareas <span class="badge badge-light">{{item.tips_count}}</span>
-                <h5 class="card-title"> {{item.name}} </h5>
-                <button class="btn btn-primary btn-sm mt-2" (click)="getTips(item.id)">
-                    Ver Mas
-                </button>
+                <h4 class="card-title"> {{item.name}} </h4>
+                <br>
+                <span class="mr-2">Tareas</span> <span class="badge badge-light">{{item.tips_count}}</span>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="row tips" *ngIf="tips.length > 0">
     <ngb-accordion #acc="ngbAccordion">
@@ -32,5 +32,4 @@
             </ng-template>
         </ngb-panel>
     </ngb-accordion>
-
 </div>

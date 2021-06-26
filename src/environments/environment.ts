@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://pooltips.ecommercesy.com/api',
+  api: 'http://127.0.0.1:8000/api',
   image_api: 'http://pooltips.ecommercesy.com/storage/service/image'
 };
 
