@@ -1,1 +1,22 @@
-<p>status works!</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="graphic-container">
+            <canvas baseChart [data]="dayChartData" [labels]="dayChartLabels" [height]="100" [options]="dayChartOptions" [chartType]="dayChartType" [legend]="chartLegend" [plugins]="chartPlugins">
+            </canvas>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="graphic">
+            <canvas baseChart [datasets]="weekChartData" [labels]="weekChartLabels" [options]="weekChartOptions" [chartType]="weekChartType" [legend]="chartLegend" [plugins]="chartPlugins">
+            </canvas>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="graphic">
+            <canvas baseChart [datasets]="monthChartData" [labels]="monthChartLabels" [height]="70" [options]="monthChartOptions" [chartType]="monthChartType" [legend]="chartLegend" [plugins]="chartPlugins">
+            </canvas>
+        </div>
+    </div>
+</div>

@@ -10,7 +10,6 @@ import { TipsService } from 'src/app/services/tips.service';
 })
 export class HomeComponent implements OnInit {
 
-
   categories: any = [];
   tips: any = [];
 

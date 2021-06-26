@@ -1,6 +1,5 @@
 <div class="row">
-
-    <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let item of categories">
+    <div class="col-md-4 mb-4" *ngFor="let item of categories">
         <div class="card mr-3">
             <div class="card-body" [style]="item.image | imagePipe:['category', item.image]" alt="Card image cap">
                 <h4 class="card-title"> {{item.name}} </h4>
@@ -11,7 +10,22 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-12 text-center">
+        <br><br>
+        <h1 class="text-secondary">Datos Estadisticos</h1>
+        <hr>
+    </div>
+</div>
 
+<app-status></app-status>
+
+<div class="row">
+    <div class="col-md-12">
+        <br><br>
+    </div>
+</div>
+<!-- 
 <div class="row tips" *ngIf="tips.length > 0">
     <ngb-accordion #acc="ngbAccordion">
         <ngb-panel *ngFor="let item of tips">
@@ -32,4 +46,4 @@
             </ng-template>
         </ngb-panel>
     </ngb-accordion>
-</div>
+</div> -->

@@ -23,6 +23,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 
 import { ComponentsModule } from './components/components.module';
 import { StatusComponent } from './pages/status/status.component';
+import { ChartsModule } from 'ng2-charts';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "bgsColor": "#00cdf7",
@@ -79,6 +80,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     EditorModule,
     ComponentsModule,
     NgxPaginationModule,
+    ChartsModule
   ],
   providers: [
     {
