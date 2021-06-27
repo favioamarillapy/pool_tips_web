@@ -102,11 +102,15 @@ export class StatusComponent implements OnInit {
     return {
       datalabels: {
         display: true,
+        inside: true,
         align: align,
+        clamp: true,
         font: {
           weight: 'bold'
         },
-        formatter: Math.round
+        formatter: function (value, context) {
+          return Math.round(value * 100) / 100;
+        }
       }
     };
   }
