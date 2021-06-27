@@ -1,14 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary menu fixed-top" *ngIf="user != null">
 
 
+
     <div class="container-fluid ml-4 mr-4">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
+
         <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
 
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto" style="display: flex; align-items: center;">
+                <img src="assets/images/icon.png" alt="" srcset="" width="25" height="25"> &nbsp; &nbsp;
+                <a class="navbar-brand" href="#">Pool Tips</a>
+            </ul>
+
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
                         <b>Inicio</b>
@@ -24,9 +31,7 @@
                         <b>Tips</b>
                     </a>
                 </li>
-            </ul>
-
-            <ul class="navbar-nav">
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="assets/images/login-avatar.png" class="img-fluid" width="35" height="35"> &nbsp; {{user.name}}

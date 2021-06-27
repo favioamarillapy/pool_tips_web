@@ -1,4 +1,18 @@
 .graphic-container {
     display: block;
     height: 400px;
+    border: 1 !important;
+    border-radius: 0.3rem !important;
+    border-color: 1px solid rgba(0, 0, 0, .1) !important;
 }
+
+.ph-weel {
+    height: 30vh;
+}
+
+.ph-container {
+    display: flex;
+    justify-content: center;
+}
+
+.col-md-6 {}
