@@ -39,18 +39,17 @@ export class StatusComponent implements OnInit {
     private poolService: PoolService,
     private ngxService: NgxUiLoaderService
 
-  ) {
+  ) { }
+
+  async ngOnInit() {
     this.ngxService.start();
 
-    this.getDayData();
-    this.getWeekData();
-    this.getMonthData();
+    await this.getDayData();
+    await this.getWeekData();
+    await this.getMonthData();
 
-    this.loading = false;
+    this.loading = await false;
     this.ngxService.stop();
-  }
-
-  ngOnInit(): void {
   }
 
   async getDayData() {
@@ -71,10 +70,13 @@ export class StatusComponent implements OnInit {
     }
   }
 
-  getMonthData() {
-    this.monthChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011'];
-    this.monthChartData.push({ data: [65, 59, 80, 81, 56, 55, 40], label: 'PH' });
-    this.monthChartData.push({ data: [65, 59, 80, 81, 56, 55, 40], label: 'Temperatura' });
+  async getMonthData() {
+    let response: any = await this.poolService.graphic('month');
+
+    if (response.data) {
+      this.monthChartLabels = response.data.labels;
+      this.monthChartData = response.data.values;
+    }
   }
 
   getChartOptions(title: string, align: string): ChartOptions {
@@ -109,6 +111,6 @@ export class StatusComponent implements OnInit {
     };
   }
 
- 
+
 
 }
