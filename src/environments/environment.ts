@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'http://127.0.0.1:8000/api',
-  image_api: 'http://pooltips.ecommercesy.com/storage/service/image'
+  api: 'https://api.piscinaelectronica.com/api',
+  image_api: 'https://api.piscinaelectronica.com/storage/service/image'
 };
 
 /*

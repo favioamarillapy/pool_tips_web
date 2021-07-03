@@ -15,4 +15,8 @@
     justify-content: center;
 }
 
-.col-md-6 {}
+@media screen and (max-device-width: 480px) {
+    .col-md-6 {
+        margin-top: 20px !important;
+    }
+}

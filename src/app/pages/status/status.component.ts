@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label, SingleDataSet } from 'ng2-charts';
@@ -33,12 +33,11 @@ export class StatusComponent implements OnInit {
   public monthChartType: ChartType = 'bar';
 
   public loading = true;
-
+  public isMobile = true;
 
   constructor(
     private poolService: PoolService,
     private ngxService: NgxUiLoaderService
-
   ) { }
 
   async ngOnInit() {
@@ -90,7 +89,7 @@ export class StatusComponent implements OnInit {
   getTitle(title: string): any {
     return {
       display: true,
-      position: 'left',
+      position: 'top',
       fullWidth: true,
       fontSize: 20,
       padding: 10,
