@@ -33,12 +33,12 @@ export class StatusComponent implements OnInit {
   public monthChartType: ChartType = 'bar';
 
   public loading = true;
-  public isMobile = true;
 
   constructor(
     private poolService: PoolService,
     private ngxService: NgxUiLoaderService
   ) { }
+
 
   async ngOnInit() {
     this.ngxService.start();

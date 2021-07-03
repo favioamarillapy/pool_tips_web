@@ -7,7 +7,7 @@
     <br>
     <div class="col-md-6  mb-4">
         <div class="graphic">
-            <canvas baseChart [data]="dayChartData" [labels]="dayChartLabels" [height]="100" [options]="dayChartOptions" [chartType]="dayChartType" [legend]="chartLegend" [plugins]="chartPlugins">
+            <canvas baseChart [data]="dayChartData" [labels]="dayChartLabels" [options]="dayChartOptions" [chartType]="dayChartType" [legend]="chartLegend" [plugins]="chartPlugins">
             </canvas>
         </div>
     </div>
@@ -18,7 +18,7 @@
 <div class="row mt-4" *ngIf="!loading">
     <div class="col-md-6  mb-4">
         <div class="graphic">
-            <canvas baseChart [datasets]="weekChartData" [labels]="weekChartLabels" [height]="100" [options]="weekChartOptions" [chartType]="weekChartType" [legend]="chartLegend" [plugins]="chartPlugins">
+            <canvas baseChart [datasets]="weekChartData" [labels]="weekChartLabels" [options]="weekChartOptions" [chartType]="weekChartType" [legend]="chartLegend" [plugins]="chartPlugins">
             </canvas>
         </div>
     </div>
@@ -26,7 +26,7 @@
     <br>
     <div class="col-md-6  mb-4">
         <div class="graphic">
-            <canvas baseChart [datasets]="monthChartData" [labels]="monthChartLabels" [height]="100" [options]="monthChartOptions" [chartType]="monthChartType" [legend]="chartLegend" [plugins]="chartPlugins">
+            <canvas baseChart [datasets]="monthChartData" [labels]="monthChartLabels" [options]="monthChartOptions" [chartType]="monthChartType" [legend]="chartLegend" [plugins]="chartPlugins">
             </canvas>
         </div>
     </div>
