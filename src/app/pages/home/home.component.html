@@ -5,7 +5,7 @@
                 <h4 class="card-title"> {{item.name}} </h4>
                 <br> <br> <br>
                 <span class="mr-2">Tareas</span> <span class="badge badge-light">{{item.tips_count}}</span>
-                <button type="button" class="btn btn-light float-right" data-toggle="modal" data-target="#modalTips" (click)="getTips(item.id)">
+                <button type="button" class="btn btn-light float-right" data-toggle="modal" data-target="#modalTips" (click)="getTips(item.id,item.name)">
                     Ver Mas
                 </button>
             </div>
@@ -17,7 +17,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTipsLabel">Modal title</h5>
+                <h5 class="modal-title" id="modalTipsLabel">{{ categoryName }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -32,7 +32,7 @@
                                 </div>
                             </ng-template>
                             <ng-template ngbPanelContent>
-                                <p class="text-muted"> {{item.description}}</p>
+                                <div class="text-muted" [innerHTML]="item.description"> </div>
                                 <div class="row" *ngIf="item.withReminder == 1">
                                     <div class="col-md-6">
                                         <!-- <button class="btn btn-primary btn-sm mt-2" (click)="getTips(item.id)">

@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   categories: any = [];
   tips: any = [];
+  categoryName = "";
 
   constructor(
     private categoriesService: CategoriesService,
@@ -32,8 +33,9 @@ export class HomeComponent implements OnInit {
     this.ngxService.stop();
   }
 
-  async getTips(category) {
+  async getTips(category, name) {
     this.ngxService.start();
+    this.categoryName = name;
 
     let response: any = await this.tipsService.get(null, { category: category });
     console.log(response);
