@@ -1,41 +1,34 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary menu fixed-top" *ngIf="user != null">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" *ngIf="user != null">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-
-
-    <div class="container-fluid ml-4 mr-4">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-        <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
-                        <b>Inicio</b>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/categories']" [routerLinkActive]="['active']">
-                        <b>Categorias</b>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/tips']" [routerLinkActive]="['active']">
-                        <b>Tips</b>
-                    </a>
-                </li>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="assets/images/login-avatar.png" class="img-fluid" width="35" height="35"> &nbsp; {{user.name}}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#" (click)="logout()">Cerrar Sesión</a>
-                    </div>
-                </li>
-            </ul>
-
-        </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+                    <b>Inicio</b>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/categories']" [routerLinkActive]="['active']">
+                    <b>Categorias</b>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/tips']" [routerLinkActive]="['active']">
+                    <b>Tips</b>
+                </a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="assets/images/login-avatar.png" class="img-fluid" width="35" height="35"> &nbsp; {{user.name}}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#" (click)="logout()">Cerrar Sesión</a>
+            </div>
+        </form>
     </div>
 </nav>
