@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -18,10 +19,10 @@ export class LoginComponent implements OnInit {
   frmLogin: FormGroup;
 
   constructor(
-    public formBuilder: FormBuilder,
+    private ngxService: NgxUiLoaderService,
     private userService: UserService,
+    public formBuilder: FormBuilder,
     private router: Router,
-    private ngxService: NgxUiLoaderService
   ) { }
 
   ngOnInit() {
